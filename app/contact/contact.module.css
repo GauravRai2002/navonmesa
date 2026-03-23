@@ -1,0 +1,77 @@
+.contactInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.infoBlock h4 {
+  font-size: 14px;
+  color: var(--color-gold);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 8px;
+}
+
+.formWrapper {
+  background: var(--color-gunmetal);
+  padding: 48px;
+  border-top: 2px solid var(--color-gold);
+  box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.gridInput {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.inputGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.inputGroup label {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--color-text-secondary);
+  font-weight: 600;
+}
+
+.inputGroup input,
+.inputGroup select,
+.inputGroup textarea {
+  width: 100%;
+  padding: 16px;
+  background: var(--color-charcoal);
+  border: 1px solid var(--color-border);
+  color: white;
+  font-family: var(--font-primary);
+  font-size: 15px;
+  transition: border-color var(--transition-fast);
+  outline: none;
+}
+
+.inputGroup input:focus,
+.inputGroup select:focus,
+.inputGroup textarea:focus {
+  border-color: var(--color-gold);
+}
+
+.inputGroup select {
+  appearance: none;
+  cursor: pointer;
+}
+
+@media (max-width: 600px) {
+  .gridInput {
+    grid-template-columns: 1fr;
+  }
+}

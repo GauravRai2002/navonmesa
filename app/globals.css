@@ -1,0 +1,246 @@
+:root {
+  /* Color System */
+  --color-black: #000000;
+  --color-charcoal: #0a0a0a;
+  --color-dark: #0f1117;
+  --color-navy: #00205b;
+  --color-navy-light: #003399;
+  --color-gunmetal: #1a1e2e;
+  --color-surface: #141722;
+  --color-border: rgba(255, 255, 255, 0.08);
+  --color-border-active: rgba(255, 255, 255, 0.2);
+
+  /* Gold accent for premium feel */
+  --color-gold: #c9a84c;
+  --color-gold-light: #e8c97a;
+  --color-gold-dark: #9a7a30;
+
+  /* Blue accent */
+  --color-blue: #1a5fff;
+  --color-blue-light: #4d84ff;
+  --color-blue-faint: rgba(26, 95, 255, 0.12);
+
+  /* Text */
+  --color-text-primary: #ffffff;
+  --color-text-secondary: rgba(255, 255, 255, 0.65);
+  --color-text-muted: rgba(255, 255, 255, 0.35);
+
+  /* Typography */
+  --font-primary: var(--font-inter), -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-display: var(--font-bebas), 'Inter', sans-serif;
+
+  /* Spacing */
+  --section-padding: 120px;
+  --container-max: 1320px;
+
+  /* Transitions */
+  --transition-fast: 0.2s ease;
+  --transition-med: 0.4s ease;
+  --transition-slow: 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 80px;
+}
+
+body {
+  font-family: var(--font-primary);
+  background-color: var(--color-charcoal);
+  color: var(--color-text-primary);
+  line-height: 1.6;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ===========================
+   LAYOUT UTILITIES
+   =========================== */
+.container {
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: 0 48px;
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 0 24px;
+  }
+}
+
+/* ===========================
+   TYPOGRAPHY
+   =========================== */
+.display-heading {
+  font-family: var(--font-display);
+  letter-spacing: 0.08em;
+  line-height: 0.95;
+  text-transform: uppercase;
+}
+
+.section-eyebrow {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--color-gold);
+}
+
+.section-title {
+  font-family: var(--font-display);
+  font-size: clamp(40px, 5vw, 72px);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  line-height: 1;
+}
+
+.section-body {
+  font-size: 17px;
+  line-height: 1.8;
+  color: var(--color-text-secondary);
+  font-weight: 300;
+}
+
+/* ===========================
+   BUTTONS
+   =========================== */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  font-family: var(--font-primary);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  text-decoration: none;
+  cursor: pointer;
+  border: none;
+  transition: all var(--transition-med);
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-primary {
+  background: var(--color-blue);
+  color: white;
+  padding: 18px 36px;
+  clip-path: polygon(8px 0%, 100% 0%, calc(100% - 8px) 100%, 0% 100%);
+}
+
+.btn-primary:hover {
+  background: var(--color-blue-light);
+  transform: translateY(-2px);
+  box-shadow: 0 12px 40px rgba(26, 95, 255, 0.4);
+}
+
+.btn-ghost {
+  background: transparent;
+  color: white;
+  padding: 17px 35px;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  letter-spacing: 0.2em;
+}
+
+.btn-ghost:hover {
+  border-color: var(--color-gold);
+  color: var(--color-gold);
+  transform: translateY(-2px);
+}
+
+.btn-gold {
+  background: var(--color-gold);
+  color: var(--color-black);
+  padding: 18px 36px;
+  font-weight: 700;
+  clip-path: polygon(8px 0%, 100% 0%, calc(100% - 8px) 100%, 0% 100%);
+}
+
+.btn-gold:hover {
+  background: var(--color-gold-light);
+  transform: translateY(-2px);
+  box-shadow: 0 12px 40px rgba(201, 168, 76, 0.4);
+}
+
+.btn-arrow::after {
+  content: '→';
+  font-size: 16px;
+  transition: transform var(--transition-fast);
+}
+
+.btn-arrow:hover::after {
+  transform: translateX(4px);
+}
+
+/* ===========================
+   DECORATIVE ELEMENTS
+   =========================== */
+.gold-line {
+  display: block;
+  width: 48px;
+  height: 2px;
+  background: var(--color-gold);
+}
+
+.divider {
+  border: none;
+  border-top: 1px solid var(--color-border);
+  width: 100%;
+}
+
+/* ===========================
+   SCROLL ANIMATIONS
+   =========================== */
+.fade-up {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.fade-up.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.fade-in {
+  opacity: 0;
+  transition: opacity 0.7s ease;
+}
+
+.fade-in.visible {
+  opacity: 1;
+}
+
+/* Stagger delays */
+.delay-1 { transition-delay: 0.1s; }
+.delay-2 { transition-delay: 0.2s; }
+.delay-3 { transition-delay: 0.3s; }
+.delay-4 { transition-delay: 0.4s; }
+.delay-5 { transition-delay: 0.5s; }
+
+/* ===========================
+   SCROLLBAR
+   =========================== */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-charcoal);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-navy);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-blue);
+}
