@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter, Bebas_Neue } from "next/font/google";
+import { Inter, Bebas_Neue, Noto_Sans_Devanagari } from "next/font/google";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import "./globals.css";
@@ -17,16 +17,23 @@ const bebas = Bebas_Neue({
   variable: "--font-bebas",
 });
 
+const notoDevanagari = Noto_Sans_Devanagari({
+  weight: ["400", "600", "700"],
+  subsets: ["devanagari"],
+  display: "swap",
+  variable: "--font-noto-devanagari",
+});
+
 export const metadata: Metadata = {
-  title: "Navonmesa | Precision Ammunition for Global Defense",
+  title: "Navonmesa | नवोन्मेष — Precision Defence Systems",
   description:
-    "Navonmesa delivers world-class precision ammunition and ordnance solutions to defense forces and security organizations across the globe. Engineered to perform. Built to last.",
+    "Navonmesa (नवोन्मेष) — You think, we innovate for you. Trusted manufacturer of precision-engineered defence systems including fuses, radio sets, flight glide path indicators, chaffs & flares, drones, electronic PCBs, and ship equipment. Supporting Indian Navy & Defence Projects. Make in India.",
   keywords:
-    "Navonmesa, precision ammunition, defense, military, ordnance, tactical ammunition, small arms, international defense",
+    "Navonmesa, नवोन्मेष, defence, fuses, radio set, glide path indicator, chaffs, flares, drones, electronic PCBs, ship equipment, Indian Navy, Make in India, defence manufacturing",
   openGraph: {
-    title: "Navonmesa | Precision Ammunition for Global Defense",
+    title: "Navonmesa | नवोन्मेष — Precision Defence Systems",
     description:
-      "World-class precision ammunition and ordnance solutions for global defense forces.",
+      "Trusted manufacturer of precision-engineered defence systems. You think, we innovate for you.",
     type: "website",
   },
 };
@@ -37,8 +44,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${inter.variable} ${bebas.variable}`}>
+    <html lang="en" className={`${inter.variable} ${bebas.variable} ${notoDevanagari.variable}`}>
       <body>
+        {/* Indian Flag Tricolor Stripe */}
+        <div className="tricolor-stripe">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
         <Navbar />
         {children}
         <Footer />

@@ -1,36 +1,47 @@
 :root {
-  /* Color System */
-  --color-black: #000000;
-  --color-charcoal: #0a0a0a;
-  --color-dark: #0f1117;
-  --color-navy: #00205b;
-  --color-navy-light: #003399;
-  --color-gunmetal: #1a1e2e;
-  --color-surface: #141722;
+  /* ===========================
+     COLOR SYSTEM — Navy + Orange (Ashok & Sons inspired)
+     =========================== */
+  --color-navy-darkest: #001030;
+  --color-navy-dark: #001845;
+  --color-navy: #002060;
+  --color-navy-mid: #003399;
+  --color-navy-light: #1a5ccc;
+  --color-navy-surface: #0a1a3a;
+
+  /* Orange accent */
+  --color-orange: #FF6B00;
+  --color-orange-light: #FF8C33;
+  --color-orange-dark: #CC5500;
+  --color-orange-glow: rgba(255, 107, 0, 0.3);
+
+  /* Indian flag tricolor */
+  --color-saffron: #FF9933;
+  --color-flag-white: #FFFFFF;
+  --color-flag-green: #138808;
+
+  /* Surfaces */
+  --color-surface-dark: #0a1428;
+  --color-surface-card: rgba(0, 32, 96, 0.4);
+  --color-surface-card-hover: rgba(0, 32, 96, 0.6);
+
+  /* Borders */
   --color-border: rgba(255, 255, 255, 0.08);
   --color-border-active: rgba(255, 255, 255, 0.2);
-
-  /* Gold accent for premium feel */
-  --color-gold: #c9a84c;
-  --color-gold-light: #e8c97a;
-  --color-gold-dark: #9a7a30;
-
-  /* Blue accent */
-  --color-blue: #1a5fff;
-  --color-blue-light: #4d84ff;
-  --color-blue-faint: rgba(26, 95, 255, 0.12);
+  --color-border-orange: rgba(255, 107, 0, 0.3);
 
   /* Text */
   --color-text-primary: #ffffff;
-  --color-text-secondary: rgba(255, 255, 255, 0.65);
-  --color-text-muted: rgba(255, 255, 255, 0.35);
+  --color-text-secondary: rgba(255, 255, 255, 0.7);
+  --color-text-muted: rgba(255, 255, 255, 0.4);
 
   /* Typography */
   --font-primary: var(--font-inter), -apple-system, BlinkMacSystemFont, sans-serif;
   --font-display: var(--font-bebas), 'Inter', sans-serif;
+  --font-hindi: var(--font-noto-devanagari), 'Noto Sans Devanagari', sans-serif;
 
   /* Spacing */
-  --section-padding: 120px;
+  --section-padding: 100px;
   --container-max: 1320px;
 
   /* Transitions */
@@ -47,12 +58,12 @@
 
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: 80px;
+  scroll-padding-top: 100px;
 }
 
 body {
   font-family: var(--font-primary);
-  background-color: var(--color-charcoal);
+  background-color: var(--color-navy-darkest);
   color: var(--color-text-primary);
   line-height: 1.6;
   overflow-x: hidden;
@@ -71,8 +82,34 @@ body {
 
 @media (max-width: 768px) {
   .container {
-    padding: 0 24px;
+    padding: 0 20px;
   }
+}
+
+/* ===========================
+   TRICOLOR TOP STRIPE
+   =========================== */
+.tricolor-stripe {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  z-index: 200;
+  display: flex;
+}
+
+.tricolor-stripe span:nth-child(1) {
+  flex: 1;
+  background: var(--color-saffron);
+}
+.tricolor-stripe span:nth-child(2) {
+  flex: 1;
+  background: var(--color-flag-white);
+}
+.tricolor-stripe span:nth-child(3) {
+  flex: 1;
+  background: var(--color-flag-green);
 }
 
 /* ===========================
@@ -90,22 +127,38 @@ body {
   font-weight: 600;
   letter-spacing: 0.3em;
   text-transform: uppercase;
-  color: var(--color-gold);
+  color: var(--color-orange);
 }
 
 .section-title {
   font-family: var(--font-display);
-  font-size: clamp(40px, 5vw, 72px);
+  font-size: clamp(36px, 5vw, 64px);
   letter-spacing: 0.06em;
   text-transform: uppercase;
   line-height: 1;
 }
 
+.section-subtitle {
+  font-size: 20px;
+  color: var(--color-text-secondary);
+  font-weight: 300;
+  line-height: 1.7;
+  max-width: 700px;
+}
+
 .section-body {
-  font-size: 17px;
+  font-size: 16px;
   line-height: 1.8;
   color: var(--color-text-secondary);
   font-weight: 300;
+}
+
+.text-hindi {
+  font-family: var(--font-hindi);
+}
+
+.text-center {
+  text-align: center;
 }
 
 /* ===========================
@@ -116,9 +169,9 @@ body {
   align-items: center;
   gap: 12px;
   font-family: var(--font-primary);
-  font-size: 12px;
+  font-size: 13px;
   font-weight: 600;
-  letter-spacing: 0.2em;
+  letter-spacing: 0.15em;
   text-transform: uppercase;
   text-decoration: none;
   cursor: pointer;
@@ -126,47 +179,45 @@ body {
   transition: all var(--transition-med);
   position: relative;
   overflow: hidden;
+  border-radius: 4px;
 }
 
 .btn-primary {
-  background: var(--color-blue);
+  background: var(--color-orange);
   color: white;
-  padding: 18px 36px;
-  clip-path: polygon(8px 0%, 100% 0%, calc(100% - 8px) 100%, 0% 100%);
+  padding: 16px 32px;
 }
 
 .btn-primary:hover {
-  background: var(--color-blue-light);
+  background: var(--color-orange-light);
   transform: translateY(-2px);
-  box-shadow: 0 12px 40px rgba(26, 95, 255, 0.4);
+  box-shadow: 0 12px 40px var(--color-orange-glow);
+}
+
+.btn-navy {
+  background: var(--color-navy);
+  color: white;
+  padding: 16px 32px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.btn-navy:hover {
+  background: var(--color-navy-mid);
+  transform: translateY(-2px);
 }
 
 .btn-ghost {
   background: transparent;
   color: white;
-  padding: 17px 35px;
+  padding: 15px 31px;
   border: 1px solid rgba(255, 255, 255, 0.35);
-  letter-spacing: 0.2em;
+  letter-spacing: 0.15em;
 }
 
 .btn-ghost:hover {
-  border-color: var(--color-gold);
-  color: var(--color-gold);
+  border-color: var(--color-orange);
+  color: var(--color-orange);
   transform: translateY(-2px);
-}
-
-.btn-gold {
-  background: var(--color-gold);
-  color: var(--color-black);
-  padding: 18px 36px;
-  font-weight: 700;
-  clip-path: polygon(8px 0%, 100% 0%, calc(100% - 8px) 100%, 0% 100%);
-}
-
-.btn-gold:hover {
-  background: var(--color-gold-light);
-  transform: translateY(-2px);
-  box-shadow: 0 12px 40px rgba(201, 168, 76, 0.4);
 }
 
 .btn-arrow::after {
@@ -182,17 +233,124 @@ body {
 /* ===========================
    DECORATIVE ELEMENTS
    =========================== */
-.gold-line {
+.orange-line {
   display: block;
   width: 48px;
-  height: 2px;
-  background: var(--color-gold);
+  height: 3px;
+  background: var(--color-orange);
 }
 
 .divider {
   border: none;
   border-top: 1px solid var(--color-border);
   width: 100%;
+}
+
+/* ===========================
+   BADGE
+   =========================== */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 16px;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 50px;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  color: var(--color-orange);
+}
+
+.badge-trial {
+  background: rgba(255, 107, 0, 0.15);
+  border-color: var(--color-orange);
+  color: var(--color-orange);
+}
+
+.badge svg, .badge-icon {
+  width: 14px;
+  height: 14px;
+}
+
+/* ===========================
+   HEXAGONAL IMAGE FRAME
+   =========================== */
+.hex-frame {
+  width: 220px;
+  height: 220px;
+  clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
+  overflow: hidden;
+  position: relative;
+}
+
+.hex-frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* ===========================
+   WAVE DECORATIONS (CSS Shapes)
+   =========================== */
+.wave-section {
+  position: relative;
+  overflow: hidden;
+}
+
+.wave-section::before {
+  content: '';
+  position: absolute;
+  top: -60px;
+  left: 0;
+  width: 100%;
+  height: 120px;
+  background: var(--color-navy-dark);
+  border-radius: 0 0 50% 50% / 0 0 100% 100%;
+  z-index: 1;
+}
+
+/* Flowing curve decoration */
+.curve-decoration {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.curve-decoration::before {
+  content: '';
+  position: absolute;
+  top: -200px;
+  right: -100px;
+  width: 600px;
+  height: 600px;
+  border-radius: 50%;
+  border: 3px solid var(--color-orange);
+  opacity: 0.15;
+}
+
+.curve-decoration::after {
+  content: '';
+  position: absolute;
+  bottom: -150px;
+  left: -80px;
+  width: 500px;
+  height: 500px;
+  border-radius: 50%;
+  border: 2px solid rgba(255, 255, 255, 0.06);
+}
+
+/* Halftone dot pattern */
+.halftone-overlay {
+  background-image: radial-gradient(circle, rgba(255,255,255,0.04) 1px, transparent 1px);
+  background-size: 16px 16px;
 }
 
 /* ===========================
@@ -233,7 +391,7 @@ body {
 }
 
 ::-webkit-scrollbar-track {
-  background: var(--color-charcoal);
+  background: var(--color-navy-darkest);
 }
 
 ::-webkit-scrollbar-thumb {
@@ -242,5 +400,24 @@ body {
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--color-blue);
+  background: var(--color-orange);
+}
+
+/* ===========================
+   SECTION BACKGROUNDS
+   =========================== */
+.section {
+  padding: var(--section-padding) 0;
+}
+
+.section-navy {
+  background: linear-gradient(180deg, var(--color-navy-dark) 0%, var(--color-navy) 100%);
+}
+
+.section-dark {
+  background: var(--color-navy-darkest);
+}
+
+.section-gradient {
+  background: linear-gradient(135deg, var(--color-navy-darkest) 0%, var(--color-navy-dark) 50%, var(--color-navy) 100%);
 }
